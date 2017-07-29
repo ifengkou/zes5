@@ -34,5 +34,7 @@
     "cordova-plugin-x-toast",
     "phonegap-plugin-barcodescanner"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "android"
+  ]
 }

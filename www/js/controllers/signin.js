@@ -164,7 +164,7 @@
           var hash = CryptoJS.SHA1($scope.loginData.password);
           var _password = hash.toString(CryptoJS.enc.Base64);
           $ionicLoading.show();
-          User.login($scope.loginData.username, _password).$promise.then(loginCallback, $rootScope.requestErrorHandler());
+          User.login($scope.loginData.username, _password.toUpperCase()).$promise.then(loginCallback, $rootScope.requestErrorHandler());
         } else {
           $ionicLoading.show({
             noBackdrop: true,
