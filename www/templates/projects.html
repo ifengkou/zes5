@@ -1,0 +1,41 @@
+<ion-view view-title="合同工地">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios-plus-outline" ng-click="showNewProjectModal()" ng-disabled="username == null"></button>
+  </ion-nav-buttons>
+  <ion-content  class="has-header">
+    <ion-refresher ng-if="projects.length >= 0 || loadError" pulling-text="下拉刷新..."
+                   on-refresh="doRefresh()" refreshing-icon="ion-loading-c"></ion-refresher>
+    <!--ng-hide="isRouteLocked(route.id)"-->
+    <ion-list delegate-handle="test-list" class="projects">
+      <ion-item collection-repeat="project in projects"
+                collection-item-width = "'100%'"
+                collection-item-height = "90">
+        <!--href="#/app/project/{{project.projectID}}"-->
+        <!--<span class="item-note ago" am-time-ago="project.buildTime"></span>-->
+        <div><b>{{project.projectName}}</b> / <span>{{project.contract.contractName}}</span></div>
+        <p><span class="small">联系人：{{project.linkMan}} {{project.tel}}</span></p>
+        <p>地址：{{project.projectAddr}}</p>
+        <!--<ion-delete-button class="ion-minus-circled"
+                           ng-click="onItemDelete(item)">
+        </ion-delete-button>-->
+        <!--ng-show="false"-->
+        <ion-option-button class="button-calm"
+                           ng-click="showUpdateProjectModal(project.projectID)">
+          编辑
+        </ion-option-button>
+        <ion-option-button class="button-assertive"
+                           ng-click="removeProject(project.projectID)">
+          删除
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+    <!--
+      Loading icon of infinte-scroll not showing with collection-repeat
+      https://github.com/driftyco/ionic/issues/2376
+    -->
+    <ion-infinite-scroll on-infinite="loadMore()" distance="10%"
+                         icon="ion-loading-c" ng-if="hasNextPage && !loadError">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

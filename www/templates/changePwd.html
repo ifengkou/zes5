@@ -1,0 +1,33 @@
+<div class="modal">
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closePwdModal()">关闭</button>
+    </div>
+    <h1 class="title">修改密码</h1>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="changePwd()" >
+      <div class="list">
+        <!--<div class="item item-thumbnail-left item-positive">
+          <img src="img/baymax.jpg">
+
+          <h1 class="light">用户登录</h1>
+        </div>-->
+        <label class="item item-input">
+          <input type="password" ng-model="changePwdData.oldPassword" placeholder="请输入原密码">
+        </label>
+        <label class="item item-input">
+          <input type="password" ng-model="changePwdData.newPassword" placeholder="请输入新密码">
+        </label>
+        <label class="item item-input">
+          <input type="password" ng-model="changePwdData.repeatPassword" placeholder="再次输入新密码">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" ng-disabled="changePwdData.oldPassword.length<5 ||changePwdData.newPassword.length<5 ||(changePwdData.newPassword !==changePwdData.repeatPassword)">
+            <i class="icon ion-ios-locked-outline"></i>修 改 密 码
+          </button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</div>

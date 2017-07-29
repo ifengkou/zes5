@@ -1,0 +1,30 @@
+<ion-view>
+  <ion-content class="sign-in">
+    <form ng-submit="signIn()">
+      <div class="list">
+        <div class="item item-thumbnail-left item-assertive">
+          <img src="img/tubiao1.png">
+
+          <h1 class="light">用户登录</h1>
+        </div>
+        <label class="item item-input">
+          <i class="icon ion-ios-person-outline positive"></i>
+          <input type="text" ng-model="loginData.username" placeholder="请输入您的用户名">
+        </label>
+        <label class="item item-input">
+          <i class="icon ion-ios-unlocked-outline positive"></i>
+          <input type="password" ng-model="loginData.password" placeholder="请输入您的密码">
+        </label>
+        <label class="item">
+          <button class="button button-block button-assertive" type="submit">
+            <i class="icon ion-log-in"></i> 登 录
+          </button>
+        </label>
+      </div>
+    </form>
+    <div class="buttonLine">
+        <button class="button button-small button-light" ng-click="showSettingModal()"> 设 置</button>
+        <button class="button button-small button-light" ng-click="showForgetModal()"> 忘记密码</button>
+    </div>
+  </ion-content>
+</ion-view>

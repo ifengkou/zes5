@@ -1,0 +1,24 @@
+<ion-view view-title="设置">
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item ng-click="loadDics()">
+        <p>刷新字典表</p>
+      </ion-item>
+      <ion-item>
+        <p>修改服务器配置</p>
+      </ion-item>
+      <ion-item>
+        <p>下载新版本</p>
+      </ion-item>
+      <ion-item>
+        <p>关于ZSE5</p>
+      </ion-item>
+      <ion-item  ng-click="exitApp()">
+        <p class="red">退出应用</p>
+      </ion-item>
+    </ion-list>
+    <div id="copyright" style="text-align: right">
+      <p><strong> &copy; {{now | date:'yyyy'}} 中昇-ERP</strong></p>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+<div class="modal">
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeUpdateProjectModal()">关闭</button>
+    </div>
+    <h1 class="title">修改工地信息</h1>
+    <div class="buttons">
+      <button class="button button-clear button-positive"
+              ng-click="saveUpdateProject(updateProjectId)"
+              ng-disabled="updateData.projectName.length<5">
+        提交
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="project-create">
+    <form>
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" ng-model="updateData.projectName" placeholder="项目名称">
+        </label>
+        <label class="item item-input">
+          <input type="text" ng-model="updateData.projectAddr" placeholder="工地地址">
+        </label>
+        <label class="item item-input">
+          <input type="text" ng-model="updateData.linkMan" placeholder="联系人">
+        </label>
+        <label class="item item-input">
+          <input type="text" ng-model="updateData.tel" placeholder="联系电话">
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</div>

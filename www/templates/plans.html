@@ -1,0 +1,93 @@
+<ion-view view-title="工地计划">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios-plus-outline" ng-click="showNewPlan()"
+            ng-disabled="username == null"></button>
+  </ion-nav-buttons>
+  <ion-pane>
+    <ion-tabs class="tabs-stable tabs-icon-top tabs-color-active-positive tabs-top">
+      <ion-tab title="未审核" icon-off="ion-ios-pricetags-outline" icon-on="ion-ios-pricetags">
+        <ion-nav-view name="tab-tab1">
+          <!-- 标签 1 内容 -->
+          <!--<ion-content class="has-tabs-top has-header-tabs">-->
+          <ion-content>
+            <ion-refresher ng-if="auditingPlans.length >= 0 || loadErrorAuditingPlans" pulling-text="下拉刷新..."
+                           on-refresh="doRefresh_auditing()" refreshing-icon="ion-loading-c"></ion-refresher>
+            <ion-list>
+              <ion-item collection-repeat="bean in auditingPlans"
+                        collection-item-width="'100%'"
+                        collection-item-height="140">
+                <div class="row">
+                  <div class="col-90">
+                    <div><b>{{bean.projectName}}</b>/<span class="small">{{bean.customerPlanID}}</span></div>
+                    <p><span class="planCube">计划{{bean.planCube}} 方</span>
+                      <span class="small conStrength">{{bean.conStrength}}</span>
+                      <span class="small consPos">{{bean.consPos}}</span>
+                      <span class="small castMode">{{bean.castMode}}</span>
+                    </p>
+
+                    <p>计划日期：<span>{{bean.planDate | amDateFormat:'YYYY.MM.DD'}}</span> <span class="timeSpan">{{bean.needDate}}</span>
+                    </p>
+
+                    <p>联系：{{bean.linkMan}} {{bean.tel}}</p>
+
+                    <p>地址：{{bean.projectAddr}}</p>
+                  </div>
+                  <div class="col-10">
+                    <br/>
+                    <button ng-click="showUpdatePlan(bean.customerPlanID)" class="button  button-small button-calm">
+                      <!--<i class="icon ion-ios-compose-outline"></i>-->
+                      编 辑
+                    </button>
+                    <br/><br/>
+                    <button ng-click="removePlan(bean.customerPlanID)" class="button  button-small button-assertive">
+                      <!--<i class="icon ion-ios-trash-outline"></i>-->
+                      删 除
+                    </button>
+                  </div>
+                </div>
+              </ion-item>
+            </ion-list>
+
+            <ion-infinite-scroll on-infinite="loadMore_auditing()" distance="8%"
+                                 icon="ion-loading-c" ng-if="hasNextPageAuditingPlans && !loadErrorAuditingPlans">
+            </ion-infinite-scroll>
+          </ion-content>
+        </ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="已审核" icon-off="ion-ios-checkmark-outline" icon-on="ion-ios-checkmark">
+        <!-- 标签 2 内容 -->
+        <ion-nav-view name="tab-tab2">
+          <ion-content>
+            <ion-refresher ng-if="auditedPlans.length >= 0 || loadErrorAuditedPlans" pulling-text="下拉刷新..."
+                           on-refresh="doRefresh_audited()" refreshing-icon="ion-loading-c"></ion-refresher>
+            <ion-list>
+              <ion-item collection-repeat="bean in auditedPlans"
+                        collection-item-width="'100%'"
+                        collection-item-height="140">
+                <!--<span class="item-note ago" am-time-ago="project.buildTime"></span>-->
+                <div><b>{{bean.projectName}}</b>/<span class="small">{{bean.customerPlanID}}</span></div>
+                <p>计划方量：<span class="planCube">{{bean.planCube}} 方</span>
+                  <span class="small conStrength">{{bean.conStrength}}</span>
+                  <span class="small consPos">{{bean.consPos}}</span>
+                  <span class="small castMode">{{bean.castMode}}</span>
+                </p>
+
+                <p>计划日期：<span>{{bean.planDate | amDateFormat:'YYYY.MM.DD'}}</span> <span
+                  class="timeSpan">{{bean.needDate}}</span></p>
+
+                <p>联系：{{bean.linkMan}} {{bean.tel}}</p>
+
+                <p>地址：{{bean.projectAddr}}</p>
+              </ion-item>
+            </ion-list>
+
+            <ion-infinite-scroll on-infinite="loadMore_audited()" distance="8%"
+                                 icon="ion-loading-c" ng-if="hasNextPageAuditedPlans && !loadErrorAuditedPlans">
+            </ion-infinite-scroll>
+          </ion-content>
+        </ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+  </ion-pane>
+</ion-view>

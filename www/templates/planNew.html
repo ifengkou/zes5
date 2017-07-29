@@ -1,0 +1,179 @@
+<div class="modal">
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeNewPlanModal()">关闭</button>
+    </div>
+    <h1 class="title">新增计划</h1>
+
+    <div class="buttons">
+      <button class="button button-clear button-positive"
+              ng-click="saveNewPlan()"
+              ng-disabled="newData.contractID.length<5 || newData.planCube<=0
+              ||newData.projectAddr==''
+              ||newData.consPos==''
+              ||newData.conStrength==''
+              ||newData.castMode==''
+              ||newData.slump==''
+              ||newData.needDate==''
+              ||newData.planDate==''">
+        提交
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="create-page">
+    <form>
+      <div class="list">
+
+        <div><label class="item item-input item-select">
+          <div class="input-label">
+            合同工程*
+          </div>
+          <select ng-model="_contractID" ng-change="watchProjectSelect(_contractID,true)">
+            <option ng-repeat="project in projects"
+                    ng-if="project.contract.contractID != undefined"
+                    value="{{project.contract.contractID}}">
+              {{project.projectName}}
+            </option>
+          </select>
+        </label>
+        </div>
+
+        <div>
+          <input hidden ng-model="newData.contractID">
+          <label class="item item-input">
+            <div class="input-label">
+              项目名称
+            </div>
+            <input type="text" ng-model="newData.projectName" placeholder="选择合同时自动填充">
+          </label>
+        </div>
+
+        <!--<div><label class="item item-input item-select">
+          <div class="input-label">
+            砼强度*
+          </div>
+          <select ng-model="newData.conStrength">
+            <option ng-repeat="conStrength in dictionary.conStrengths"
+                    ng-if="conStrength.dicName != undefined"
+                    value="{{conStrength.dicName}}">
+              {{conStrength.dicName}}
+            </option>
+          </select>
+        </label>
+        </div>-->
+
+        <div class="item item-input conStrength_input">
+          <div class="input-label">
+            砼强度*
+          </div>
+          <span><input type="text" ng-model="newData.conStrength" placeholder="录入"></span>
+          <span class="item-select">
+            <select ng-model="newData.conStrength">
+              <option ng-repeat="conStrength in dictionary.conStrengths"
+                      ng-if="conStrength.dicName != undefined"
+                      value="{{conStrength.dicName}}">
+                {{conStrength.dicName}}
+              </option>
+            </select>
+          </span>
+        </div>
+
+        <div><label class="item item-input item-select">
+          <div class="input-label">
+            塌落度*
+          </div>
+          <select ng-model="newData.slump">
+            <option ng-repeat="slump in dictionary.slump"
+                    ng-if="slump.dicName != undefined"
+                    value="{{slump.dicName}}">
+              {{slump.dicName}}
+            </option>
+          </select>
+        </label>
+        </div>
+        <div><label class="item item-input item-select">
+          <div class="input-label">
+            施工方式*
+          </div>
+          <select ng-model="newData.castMode">
+            <option ng-repeat="castMode in dictionary.castMode"
+                    ng-if="castMode.dicName != undefined"
+                    value="{{castMode.dicName}}">
+              {{castMode.dicName}}
+            </option>
+          </select>
+        </label>
+        </div>
+        <!--<div><label class="item item-input item-select">
+          <div class="input-label">
+            施工部位*
+          </div>
+          <select ng-model="newData.consPos" class="topic-tabs">
+            <option ng-repeat="consPos in dictionary.consPos"
+                    ng-if="consPos.dicName != undefined"
+                    value="{{consPos.dicName}}">
+              {{consPos.dicName}}
+            </option>
+          </select>
+        </label>
+        </div>-->
+        <label class="item item-input">
+          <div class="input-label">
+            施工部位*
+          </div>
+          <input type="text" ng-model="newData.consPos" placeholder="墙面、柱子等">
+        </label>
+        <label class="item item-input">
+          <div class="input-label">
+            计划数量*
+          </div>
+          <input type="number" ng-model="newData.planCube" placeholder="所需方量">
+        </label>
+        <label class="item item-input">
+          <div class="input-label">
+            计划日期*
+          </div>
+          <input type="date" ng-model="newData.planDate">
+        </label>
+       <!-- <label class="item item-input">
+          <div class="input-label">
+            到场时间*
+          </div>
+          &lt;!&ndash;pattern=" ^[0-23]:[0-59]$"&ndash;&gt;
+          <input type="text" ng-model="newData.needDate" >
+        </label>-->
+
+        <div class="item item-input-inset">
+          <div class="input-label">
+            到场时间*
+          </div>
+          <input type="text" ng-model="newData.needDate" ng-readonly="true" placeholder="右侧选择">
+          <ionic-timepicker input-obj="timePickerObject">
+            <button class="button button-small button-calm overflowShow">
+              <standard-time-meridian etime='timePickerObject.inputEpochTime'>选择</standard-time-meridian>
+            </button>
+          </ionic-timepicker>
+        </div>
+
+        <label class="item item-input">
+          <div class="input-label">
+            工地地址*
+          </div>
+          <input type="text" ng-model="newData.projectAddr" placeholder="选择合同时自动填充">
+        </label>
+        <label class="item item-input">
+          <div class="input-label">
+            联系人
+          </div>
+          <input type="text" ng-model="newData.linkMan" placeholder="选择合同时自动填充">
+        </label>
+        <label class="item item-input">
+          <div class="input-label">
+            联系电话
+          </div>
+          <input type="text" ng-model="newData.tel" placeholder="选择合同时自动填充">
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</div>

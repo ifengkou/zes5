@@ -1,0 +1,109 @@
+/* Empty. Add your own CSS if you like */
+.has-header-tabs {
+  top: 93px;
+  bottom: 0;
+  height: auto;
+}
+
+.create-page .list {
+  margin-bottom: 0px;
+}
+
+.sign-in .icon {
+  font-size: 32px;
+  padding: 0 20px 0 2px;
+}
+
+.sign-in .item-thumbnail-left img {
+  border-radius: 50%;
+}
+
+.tab-item .icon {
+  display: block;
+  margin: 0 auto;
+  height: 28px;
+  font-size: 25px;
+}
+
+.planCube{
+  color:#ef4e3a;
+  border-radius: 2px;
+  padding: 1px 2px;
+  border-color:#cc2311;
+}
+
+.conStrength {
+  background-color: #f0b840;
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 1px 2px;
+}
+
+.consPos {
+  background-color: #80bd01;
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 1px 2px;
+}
+
+.castMode {
+  background-color: #66cc33;
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 1px 2px;
+}
+.circle {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  -webkit-border-radius: 25px 25px 25px 25px;
+  padding-top:4px;
+}
+
+.emptyCircle{
+  border: 1px #66cc33 dashed;
+}
+
+.fullCircle{
+  border: 1px #ef4e3a solid;
+}
+
+.circle .planCube{
+  text-align: center;
+  border-top:1px #b2b2b2 dashed;
+}
+
+.circle .prodCube{
+  text-align: center;
+  margin-bottom: 0px;
+}
+.buttonLine{
+  width:100%;height:100%;margin:0px;
+}
+
+.sign .buttonLine{
+  text-align:right;
+}
+.sign-in .buttonLine{
+  text-align:center;
+  height:120px;
+}
+.express .expressList{
+  padding:0px;
+}
+.timeSpan{
+  font-style:italic
+}
+
+.conStrength_input input{
+  width:100px;
+  padding:0px 0px;
+}
+.conStrength_input select{
+  border-left:1px dashed gray;
+  border-radius: 0;
+  width:100px;
+}
+.conStrength_input .item-select{
+  position:static;
+}

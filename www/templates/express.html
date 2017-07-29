@@ -1,0 +1,41 @@
+<ion-view view-title="供货进度">
+  <ion-content class="has-header express">
+    <ion-refresher ng-if="shippings.length >= 0 || loadError" pulling-text="下拉刷新..."
+                   on-refresh="doRefresh()" refreshing-icon="ion-loading-c"></ion-refresher>
+    <ion-list>
+      <ion-item collection-repeat="shipping in shippings"
+                collection-item-width="'100%'"
+                collection-item-height="95">
+
+        <div class="row expressList">
+          <div class="col-20">
+            <div class="circle emptyCircle" ng-show="shipping.produceCubes<shipping.plancube">
+              <p class="prodCube">{{shipping.produceCubes}}</p>
+              <p class="planCube">{{shipping.plancube}}</p>
+            </div>
+            <div class="circle fullCircle" ng-show="shipping.produceCubes>=shipping.plancube">
+              <p class="prodCube">{{shipping.produceCubes}}</p>
+              <p class="planCube">{{shipping.plancube}}</p>
+            </div>
+          </div>
+
+          <div class="col-80">
+            <p><b>{{shipping.projectName}}</b>
+            </p>
+            <p></span><span class="small conStrength">{{shipping.conStrength}}</span>
+              <span class="small consPos">{{shipping.consPos}}</span>
+              <span class="small castMode">{{shipping.castMode}}</span>
+              <span ng-if="shipping.unsigncube>0||shipping.unsigntimes>0">未签[{{shipping.unsigncube}}方/{{shipping.unsigntimes}}次]</span>
+              <!--<span class="small planCube" ng-show="shipping.providedTimes>0">{{shipping.providedTimes}}车次</span>-->
+            </p>
+
+            <p>最近发车时间：<span>{{shipping.lastTime | amDateFormat:'YYYY.MM.DD hh:mm'}}</span></p>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll on-infinite="loadMore()" distance="10%"
+                         icon="ion-loading-c" ng-if="hasNextPage && !loadError">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
